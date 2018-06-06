@@ -3,39 +3,32 @@ package DP;
 import java.io.*;
 
 public class DP_1003 {
-    public static int memo[] = new int[100];
-    public static int a;
-    public static int b;
+    public static int memo[][] = new int[42][2];
+    public static int value;
+    public static int a, b;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int n = Integer.valueOf(br.readLine());
-        for(int i=0; i<n; i++) {
-            int value = Integer.valueOf(br.readLine());
-            fivo(value);
-            bw.write(String.valueOf(a) + " " + String.valueOf(b) + "\n");
-            a=0;
-            b=0;
+        int N = Integer.valueOf(br.readLine());
+        fivo();
+        for (int i = 0; i < N; i++) {
+            value = Integer.valueOf(br.readLine());
+
+            bw.write(memo[value][0] + " " + memo[value][1] + "\n");
         }
         br.close();
         bw.close();
     }
 
-    public static int fivo(int x) {
-        if (x == 0) {
-            a++;
-            return 0;
-        } else if(x==1) {
-            b++;
-            return 1;
-//        } else if (memo[x] > 0) {
-//            return memo[x];
-//        } else {
-//            memo[x] = fivo(x-1) + fivo(x-2);
-//            return memo[x];
-//        }
-        } else {
-            return fivo(x-1) + fivo(x-2);
+    public static void fivo() {
+        memo[0][0] = 1;
+        memo[0][1] = 0;
+        memo[1][1] = 1;
+        memo[1][0] = 0;
+        for (int i=2; i<=40; i++) {
+            memo[i][0] = memo[i-1][0] + memo[i-2][0];
+            memo[i][1] = memo[i-1][1] + memo[i-2][1];
         }
     }
 }
