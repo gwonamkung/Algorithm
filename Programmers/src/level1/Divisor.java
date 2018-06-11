@@ -4,21 +4,27 @@ import java.util.*;
 
 class Divisor {
     public static void main(String[] args) {
-        int[] arr = {2,10,1,5,7,128,56,121};
-        for (int items:solution(arr,1)) System.out.println(items);
+        int[] arr = {2, 10, 1, 5, 7, 128, 56, 121};
+        for (int items : solution(arr, 2)) System.out.println(items);
     }
 
     public static int[] solution(int[] arr, int divisor) {
-        int length = Arrays.stream(arr).filter(factor -> factor % divisor == 0).toArray().length;
-        if ( length == 0) {
-            int[] r = new int[1];
-            Arrays.fill(r, -1);
-            return r;
-        } else if (length == arr.length) {
-            Arrays.sort(arr);
-            return arr;
-        } else {
-            return Arrays.stream(arr).filter(factor -> factor % divisor == 0).toArray();
+        int[] answer;
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % divisor == 0) {
+                list.add(arr[i]);
+            }
         }
+        answer = new int[list.size()];
+
+        if (list.isEmpty()) {
+            answer = new int[1];
+            answer[0] = -1;
+            return answer;
+        }
+        for(int i=0; i<list.size();i++) answer[i] = list.get(i);
+        Arrays.sort(answer);
+        return answer;
     }
 }
