@@ -3,11 +3,11 @@ package queue;
 import java.util.*;
 
 public class DFS_BFS_1260 {
-    public static final int MAX_COUNT = 1001;
-    public static boolean[] is_visited = new boolean[MAX_COUNT];
-    public static int[][] arr = new int[MAX_COUNT][MAX_COUNT];
-    static String result = "";
-    static int N = 0, M = 0, start = 0;
+    public static final int MAX = 1001;
+    public static boolean[] Is_visited = new boolean[MAX];
+    public static int[][] arr = new int[MAX][MAX];
+    public static String result = "";
+    public static int N = 0, M = 0, start = 0;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -22,30 +22,32 @@ public class DFS_BFS_1260 {
         }
         DFS(start);
         result += "\n";
-        is_visited = new boolean[MAX_COUNT];
+        Is_visited = new boolean[MAX];
         BFS(start);
         System.out.println(result);
     }
 
-    public static void DFS(int V) {
-        is_visited[V] = true;
-        result += V + " ";
+    public static void DFS(int x) {
+        Is_visited[x] = true;
+        result += x + " ";
+
         for (int i = 1; i <= N; i++) {
-            if (arr[V][i] == 1 && is_visited[i] == false) DFS(i);
+            if (arr[x][i] == 1 && Is_visited[i] == false) DFS(i);
         }
     }
 
-    public static void BFS(int V) {
-        is_visited[V] = true;
-        Queue<Integer> list = new LinkedList<>();
-        list.add(V);
-        while (!list.isEmpty()) {
-            V = list.poll();
-            result += V + " ";
-            for (int i = 1; i <= N; i++) {
-                if (arr[V][i] == 1 && is_visited[i] == false) {
-                    is_visited[i] = true;
-                    list.add(i);
+    public static void BFS(int x) {
+        Is_visited[x] = true;
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(x);
+
+        while (queue.iterator().hasNext()) {
+            x = queue.poll();
+            result += x + " ";
+            for (int i = 0; i <= N; i++) {
+                if (arr[x][i] == 1 && Is_visited[i] == false) {
+                    Is_visited[i] = true;
+                    queue.add(i);
                 }
             }
         }
