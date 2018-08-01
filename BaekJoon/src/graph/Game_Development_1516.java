@@ -1,40 +1,40 @@
+package graph;
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class Main {
+public class Game_Development_1516 {
     private static Queue<Integer>[] ins;
     private static int[] indegree;
     private static int[] result;
     private static int[] time;
     private static int N;
-    private static int M;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int t_case = sc.nextInt();
-        for (int i=1; i<= t_case; i++) {
-            N = sc.nextInt();
-            M = sc.nextInt();
-            ins = new Queue[N + 1];
-            indegree = new int[N + 1];
-            time = new int[N + 1];
+        N = sc.nextInt();
+        ins = new Queue[N + 1];
+        indegree = new int[N + 1];
+        time = new int[N + 1];
 
-            for (int j = 0; j < N + 1; j++) ins[j] = new LinkedList<>();
+        for (int i = 0; i < N + 1; i++) ins[i] = new LinkedList<>();
 
-            for(int j=1; j<=N; j++) time[j] = sc.nextInt();
+        for (int i = 1; i <= N; i++) {
+            int t = sc.nextInt();
+            time[i] = t;
 
-            for (int j=0; j<M; j++) {
-                int x = sc.nextInt();
-                int y = sc.nextInt();
-                ins[x].add(y);
-                indegree[y]++;
+            while (true) {
+                int num = sc.nextInt();
+                if (num == -1) break;
+                ins[num].add(i);
+                indegree[i]++;
             }
-            solution(sc.nextInt());
         }
+        solution();
     }
 
-    private static void solution(int target) {
+    private static void solution() {
         result = new int[N + 1];
         Queue<Integer> q = new LinkedList<>();
         for (int i = 1; i <= N; i++) {
@@ -53,6 +53,6 @@ public class Main {
                 if (indegree[y] == 0) q.add(y);
             }
         }
-        System.out.println(result[target]);
+        for (int i=1; i<=N; i++) System.out.println(result[i]);
     }
 }

@@ -1,8 +1,10 @@
+package dp;
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class Main {
+public class DP_1005_ACMCraft {
     private static Queue<Integer>[] ins;
     private static int[] indegree;
     private static int[] result;
