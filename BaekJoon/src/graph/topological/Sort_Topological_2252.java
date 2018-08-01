@@ -1,4 +1,4 @@
-package graph;
+package graph.topological;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -31,10 +31,14 @@ class Sort_Topological_2252 {
     }
 
     public static void topological_sort() {
+        //진입차선이 0인것을 result 큐에 삽입
         for (int i=1; i<ve.length; i++) if(inDegree[i] == 0) result.add(i);
+
         while(!result.isEmpty()) {
             System.out.print(result.peek() + " ");
             int v = result.poll();
+
+            //노드의 진출차선 제거
             for (int i=1; i<= ve[v].size(); i++) {
                 System.out.println("v: " + v + ", i: " + i);
                 int next = ve[v].get(i-1);
