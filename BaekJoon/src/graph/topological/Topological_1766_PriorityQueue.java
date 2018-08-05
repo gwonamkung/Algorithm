@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class Graph_1766_PriorityQueue {
+public class Topological_1766_PriorityQueue {
     private static Queue<Integer>[] ins;
     private static Queue<Integer> result_q;
     private static int[] indegree;

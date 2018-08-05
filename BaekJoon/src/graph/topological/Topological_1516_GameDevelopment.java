@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class Game_Development_1516 {
+public class Topological_1516_GameDevelopment {
     private static Queue<Integer>[] ins;
     private static int[] indegree;
     private static int[] result;

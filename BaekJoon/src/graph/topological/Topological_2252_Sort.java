@@ -5,7 +5,7 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.Vector;
 
-class Sort_Topological_2252 {
+class Topological_2252_Sort {
     private static Vector<Integer>[] ve;
     private static Queue<Integer> result;
     private static int[] inDegree;

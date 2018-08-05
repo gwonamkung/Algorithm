@@ -1,4 +1,4 @@
-package graph.dfs_bfs;
+package graph.dfs;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class DFS_BFS_2667 {
     private static int[][] danji;
     static int inside_cnt;
-    static List<Integer> total_cnt;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -22,7 +21,7 @@ public class DFS_BFS_2667 {
         }
 
         inside_cnt = 0;
-        total_cnt = new ArrayList<>();
+        List<Integer> total_cnt = new ArrayList<>();
         for (int i = 1; i <= X; i++) {
             for (int j = 1; j <= X; j++) {
                 if (danji[i][j] == 1) {
@@ -35,6 +34,7 @@ public class DFS_BFS_2667 {
         Collections.sort(total_cnt);
         System.out.println(total_cnt.size());
         for (int items : total_cnt) System.out.println(items);
+        sc.close();
     }
 
     private static void dfs(int x, int y) {
