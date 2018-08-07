@@ -1,26 +1,36 @@
 package level3;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class 최장증가수열 {
+    static int[] arr;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        long t = sc.nextInt();
-
+        int t = sc.nextInt();
         for (int tcase = 1; tcase <= t; tcase++) {
             int n = sc.nextInt();
-            long[] arr = new long[n];
-            long m = 0;
-            int l = 0;
-            arr[0] = sc.nextInt();
-            for (int i = 1; i < n; i++) {
-                arr[i] = sc.nextLong();
-                if (Math.abs(arr[i] - arr[i - 1]) > m) {
-                    m = arr[i] - arr[i - 1];
-                    l = i;
+            arr = new int[n];
+            for (int i = 0; i < n; i++) arr[i] = sc.nextInt();
+            System.out.println("#" + tcase + " " + LIS_DP(arr));
+        }
+    }
+
+    static int LIS_DP(int[] nums) {
+        if (arr.length == 0) return 0;
+        int[] dp = new int[arr.length];
+
+        for (int i = 0; i < arr.length; i++) {
+            dp[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (arr[i] > arr[j]) {
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                    System.out.println("dp["+i+"]: " + dp[i] + " j: " + j);
                 }
             }
-            System.out.println("#" + tcase + " " + l);
         }
+        int max = 0;
+        for (int items : dp) max = Math.max(items, max);
+        return max;
     }
 }
