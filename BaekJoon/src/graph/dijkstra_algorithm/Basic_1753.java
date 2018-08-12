@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Basic_1753 {
+public class  Basic_1753 {
     private static class Node {
         int num;
         int time;
