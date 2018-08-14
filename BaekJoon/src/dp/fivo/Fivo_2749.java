@@ -1,4 +1,4 @@
-package fivo;
+package dp.fivo;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

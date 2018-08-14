@@ -1,4 +1,4 @@
-package kakao_2018;
+package kakao.kakao_2018;
 
 import java.util.*;
 

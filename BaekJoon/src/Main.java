@@ -1,26 +1,35 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.StringTokenizer;
 
-public class Main {
+class Main {
+    static int N, S, cnt, arr[];
+
     public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
-        int[] price = new int[N + 1];
-        int[][] dp = new int[N + 1][3];
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
-        for (int i = 1; i <= N; i++) price[i] = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(in.readLine());
+        N = Integer.parseInt(st.nextToken());
+        S = Integer.parseInt(st.nextToken());
 
-        dp[1][1] = dp[1][2] = price[1];
+        arr = new int[N + 1];
+        st = new StringTokenizer(in.readLine());
+        for (int i = 1; i <= N; i++) arr[i] = Integer.parseInt(st.nextToken());
 
-        for (int i = 2; i <= N; i++) {
-            dp[i][0] = Math.max(Math.max(dp[i - 1][0], dp[i - 1][1]), dp[i - 1][2]);
-            dp[i][1] = dp[i - 1][0] + price[i];
-            dp[i][2] = dp[i - 1][1] + price[i];
-        }
+        subset(1, 0);
+        System.out.println(cnt);
 
-        System.out.println(Math.max(Math.max(dp[N][0], dp[N][1]), dp[N][2]));
+        in.close();
+    }
+
+    private static void subset(int idx, int sum) {
+        if(idx > N) return;
+
+        int current_sum = sum + arr[idx];
+
+        if(current_sum == S) cnt++;
+
+        subset(idx + 1, current_sum);
+        subset(idx + 1, sum);
     }
 }
