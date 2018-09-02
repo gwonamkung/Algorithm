@@ -1,4 +1,4 @@
-package study.BOJ_3474;
+package study.day2.BOJ_3474;
 
 import java.io.BufferedReader;
 import java.io.IOException;

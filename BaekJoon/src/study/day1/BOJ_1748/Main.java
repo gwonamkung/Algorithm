@@ -1,4 +1,4 @@
-package study.BOJ_1748;
+package study.day1.BOJ_1748;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
