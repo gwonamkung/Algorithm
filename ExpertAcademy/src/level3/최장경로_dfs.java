@@ -22,12 +22,12 @@ public class 최장경로_dfs {
             map = new int[N + 1][N + 1];
             visited = new boolean[N + 1];
 
-            for (int i = 1; i <= M; i++) {
-                st = new StringTokenizer(br.readLine());
-                int x = Integer.parseInt(st.nextToken());
-                int y = Integer.parseInt(st.nextToken());
-                map[x][y] = map[y][x] = 1;
-            }
+//            for (int i = 1; i <= M; i++) {
+//                st = new StringTokenizer(br.readLine());
+//                int x = Integer.parseInt(st.nextToken());
+//                int y = Integer.parseInt(st.nextToken());
+//                map[x][y] = map[y][x] = 1;
+//            }
 
             max = 0;
             for (int i = 1; i <= N; i++) dfs(i, 1);
